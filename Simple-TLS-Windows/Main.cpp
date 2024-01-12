@@ -1,6 +1,5 @@
 #include <stdio.h>
-
-#include "windows.h"
+#include <windows.h>
 
 void NTAPI __stdcall TLSCallbacks(PVOID DllHandle, DWORD dwReason,
                                   PVOID Reserved);
@@ -14,10 +13,8 @@ void NTAPI __stdcall TLSCallbacks(PVOID DllHandle, DWORD dwReason,
 //  PIMAGE_TLS_CALLBACK _tls_callback = TLSCallbacks;
 
 //  begin code block TLS
-
 #pragma const_seg(".CRT$XLB")
 EXTERN_C const PIMAGE_TLS_CALLBACK _tls_callback = TLSCallbacks;
-
 //  end code block TLS
 
 void NTAPI __stdcall TLSCallbacks(PVOID, DWORD dwReason, PVOID) {
